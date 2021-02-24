@@ -21,7 +21,6 @@ Route::get('/', 'PessoasController@show') -> name('tela_inicial');
 Route::get('/create', 'PessoasController@create');
 Route::post('/create', function(PessoasService $service, PessoasController $redirecionar){
     // Array shift vai retirar o token do laravel para nao entrar no cadastro da api
-    array_shift($_POST);
     $service -> store($_POST);
 }) -> name('cadastrar_pessoa');
 

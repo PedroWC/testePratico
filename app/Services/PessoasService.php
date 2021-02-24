@@ -12,6 +12,7 @@ class PessoasService
     public function store ($data)
     {
         array_shift($data);
+        
         $campos    = json_encode($data);
         $uri       = 'https://www.unigran.br/campogrande/api/index.php/teste/tecnico';
         $cabecalho = array('Content-Type: application/json', 'Accept: application/json');

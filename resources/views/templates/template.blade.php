@@ -3,11 +3,14 @@
   <head>
     <!-- Meta tags requiridas -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" 
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <title>Exemplo de crud PHP</title>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script> 
+    <script type="text/javascript" 
+            src="http://code.jquery.com/jquery-1.7.2.min.js"></script> 
     <script>     
       function mascaraCPF(i){
 
@@ -47,7 +50,7 @@
 
         if (v.length == 1){
           var temp = i.value;
-          i.value = "(" + temp;
+          i.value  = "(" + temp;
         }
         if (v.length == 3) i.value += ")";
         if (v.length == 9) i.value += "-";
@@ -60,7 +63,8 @@
       <div class='jumbotron bg-primary'>
         <h1>Unigran Capital</h1>
         <p>Exemplo de CRUD php com Laravel</p>
-        <button onclick="window.location.href = '/create'" class="btn btn-success">Adicionar</button>
+        <button onclick="window.location.href = '/create'" 
+                class="btn btn-success">Adicionar</button>
       </div>
 
     </div>

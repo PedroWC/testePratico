@@ -6,9 +6,14 @@
         {{-- Input do filtro por Nomes --}}
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Nome </span>
+              <span class="input-group-text" id="basic-addon1">Nome</span>
             </div>
-            <input type="text" class="form-control" oninput="myFunction()" placeholder="Filtro por Nome" id="myInput" aria-describedby="basic-addon1"><br>
+            <input type="text" 
+                   class="form-control" 
+                   oninput="myFunction()" 
+                   placeholder="Filtro por Nome" 
+                   id="myInput" 
+                   aria-describedby="basic-addon1"><br>
         </div>
 
 
@@ -41,8 +46,12 @@
             <tr>
                 <td>
                     <div class="btn-group" role="group">
-                        <button type="button" onclick="window.location.href = '/update/{{ $pessoa->id }}'" class="btn-secondary btn btn-info"  >Editar</button>
-                        <button type="button" onclick="window.location.href = '/delete/{{ $pessoa->id }}'" @method('POST') class="btn-secondary btn btn-danger">Deletar</button>
+                        <button type="button" 
+                                onclick="window.location.href = '/update/{{ $pessoa->id }}'" 
+                                class="btn-secondary btn btn-info"  >Editar</button>
+                        <button type="button" 
+                                onclick="window.location.href = '/delete/{{ $pessoa->id }}'" @method('POST') 
+                                class="btn-secondary btn btn-danger">Deletar</button>
                     </div>
                 </td>
                 <th scope="row">{{ $pessoa->id }}</th>
@@ -66,10 +75,10 @@
         function myFunction() {
             // Variáveis
             var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("myInput");
+            input  = document.getElementById("myInput");
             filter = input.value.toUpperCase();
-            table = document.getElementById("myTable");
-            tr = table.getElementsByTagName("tr");
+            table  = document.getElementById("myTable");
+            tr     = table.getElementsByTagName("tr");
             
             // Percorre todas as linhas da tabela e oculta aquelas que não correspondem à consulta de pesquisa
             for (i = 0; i < tr.length; i++) {
