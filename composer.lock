@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "96098e473b028cdb2529580554a1ae3e",
+    "content-hash": "9ad94095fc4517aed03dd3843be12a0b",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -163,7 +163,6 @@
             },
             "time": "2019-12-30T22:54:17+00:00"
         },
-        {
             "name": "jakub-onderka/php-console-color",
             "version": "v0.2",
             "source": {

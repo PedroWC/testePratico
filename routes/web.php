@@ -10,19 +10,30 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use Symfony\Component\HttpFoundation\Request;
+use App\Services\PessoasService;
+use App\Http\Controllers\PessoasController;
 
-// LARAVEL FORM TOKEN
-Route::get('/token', function (Request $request) {
-    $token = $request->session()->token();
+// READ
+Route::get('/', 'PessoasController@show') -> name('tela_inicial');
 
-    $token = csrf_token();
 
-    // ...
-});
+// CREATE
+Route::get('/create', 'PessoasController@create');
+Route::post('/create', function(PessoasService $service, PessoasController $redirecionar){
+    // Array shift vai retirar o token do laravel para nao entrar no cadastro da api
+    array_shift($_POST);
+    $service -> store($_POST);
+}) -> name('cadastrar_pessoa');
 
-Route::get('/pessoas/create', 'PessoasController@create');
-Route::post('/pessoas/create', 'PessoasController@store') -> name('cadastrar_pessoa');
 
-Route::get('/pessoas/show', 'PessoasController@show');
-Route::get('/pessoas/read', 'PessoasController@read') -> name('buscar_pessoas');
+// UPDATE
+Route::get('/update/{id}', 'PessoasController@edit');
+Route::post('/update/{id}', function(PessoasService $service, PessoasController $redirecionar, $id){
+    $service -> update($_POST, $id);
+}) -> name('editar_pessoa');
+
+
+// DELETE
+Route::get('/delete/{id}', function(PessoasService $service, PessoasController $redirecionar, $id){
+    $service -> destroy($id);
+}) -> name('deletar_pessoa');

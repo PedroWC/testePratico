@@ -6,44 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
-    {{-- Script de filtro por nome na tabela de cadastros --}}
-    <script>
-      function myFunction() {
-        // Variáveis
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-      
-        // Percorre todas as linhas da tabela e oculta aquelas que não correspondem à consulta de pesquisa
-        for (i = 0; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td")[1];
-          if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              tr[i].style.display = "";
-            } else {
-              tr[i].style.display = "none";
-            }
-          }
-        }
-      }
-      </script>
-
-
     <title>Exemplo de crud PHP</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script> 
+    <script>     
+      function mascaraCPF(i){
+
+          var v = i.value;
+          
+          // impede entrar outro caractere que não seja número
+          if(isNaN(v[v.length-1])){ 
+            i.value = v.substring(0, v.length-1);
+            return;
+          }
+          
+          i.setAttribute("maxlength", "14");
+          if (v.length == 3 || v.length == 7) i.value += ".";
+          if (v.length == 11) i.value += "-";
+
+      }
+      function mascaraData(i){
+        var v = i.value;
+
+        // impede entrar outro caractere que não seja número
+        if(isNaN(v[v.length-1])){ 
+          i.value = v.substring(0, v.length-1);
+          return;
+        }
+
+        if (v.length == 2) i.value += ".";
+        if (v.length == 5) i.value += ".";
+      }
+      function mascaraTel(i){
+        var v = i.value;
+
+        // impede entrar outro caractere que não seja número
+        if(isNaN(v[v.length-1])){ 
+          i.value = v.substring(0, v.length-1);
+          return;
+        }
+
+        if (v.length == 1){
+          var temp = i.value;
+          i.value = "(" + temp;
+        }
+        if (v.length == 3) i.value += ")";
+        if (v.length == 9) i.value += "-";
+      }
+    </script>
   </head>
   <body class="bg-dark text-light">
     <div class="container">
 
-      <div class='jumbotron bg-info'>
-        <h1>CreateReadUpdateDelete PHP</h1>
-        <p>Exemplo de CRUD com laravel</p>
-        <button onclick="window.location.href = '/pessoas/create'" class="btn btn-success">Adicionar</button>
-        <button class="btn btn-primary">Editar</button>
-        <button class="btn btn-danger">Excluir</button>
+      <div class='jumbotron bg-primary'>
+        <h1>Unigran Capital</h1>
+        <p>Exemplo de CRUD php com Laravel</p>
+        <button onclick="window.location.href = '/create'" class="btn btn-success">Adicionar</button>
       </div>
 
     </div>

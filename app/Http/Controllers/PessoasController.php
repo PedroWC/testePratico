@@ -2,52 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Services\PessoasService;
 
+// CAMADA CONTROLLER
 class PessoasController extends Controller
 {
-    // CONTROLLER
     public function create()
     {
         return view('pessoas.create');
     }
+    
     public function show ()
     {
         return view('pessoas.show');
     }
-    public function edit()
+
+    public function edit($id)
     {
-        
+        return view('pessoas.update', ['id' => $id]);
     }
 
-    // SERVICE
-    public function store()
+    public function delete(PessoasService $service, $row)
     {
-        $retirar_id = array_shift($_POST);
-        $data_string = json_encode($_POST);
+        $a     = $service -> read();
+        $array = json_decode($a);
 
-        $ch = curl_init();
-        curl_setopt_array($ch, [
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => 'https://www.unigran.br/campogrande/api/index.php/teste/tecnico',
-            CURLOPT_POST => 1,
-            CURLOPT_POSTFIELDS => $data_string,
-        ]);
-                                                                                                                         
-        $result = curl_exec($ch);
-        curl_close($ch);
-        dd($result);
-    }
-    public function read()
-    {
-        $url = 'https://www.unigran.br/campogrande/api/index.php/teste/tecnico';
-        $pessoas = json_decode(file_get_contents($url));
-
-        return $pessoas;
-    }
-    public function update()
-    {
-
+        return view('pessoas.delete', array($array[$row]));
     }
 
 }
